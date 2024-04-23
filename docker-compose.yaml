@@ -1,0 +1,19 @@
+services:
+  db:
+    image: mariadb
+    container_name: docker-mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+    ports:
+      - 8025:3306
+    volumes:
+      - ./data:/var/lib/mysql:Z
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: docker-phpmyadmin
+    restart: always
+    ports:
+      - 8026:80
+    environment:
+      - PMA_ARBITRARY=1
